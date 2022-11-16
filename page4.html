@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page 4</title>
+</head>
+<style>
+    #para{text-align: center;    margin-top: 50vh;}
+</style>
+<body>
+    
+
+<h1 id="para">page </h1>
+
+
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>const socket =window.io()
+
+    var para=document.getElementById("para")
+
+socket.on("datatopage",info=>{
+
+para.innerText=info[3][0];
+para.style.fontSize=info[3][1]+"px";
+
+})
+
+socket.on("dataretate",retation=>{
+    if(retation[0]==4){
+       para.style.transform="rotate("+retation[1]+ "deg)";
+    }   
+})
+
+socket.on("fontsize",fontsize=>{
+    
+    if(fontsize[0]==4){
+        para.style.fontSize=fontsize[1]+"px";
+    }
+    
+})
+</script>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    h2{    text-align: center;
+    color: aquamarine;
+    margin: 20px;}
+    button{margin-left: 45%; margin-bottom: 10px; margin-top: 20px;}
+
+  .contentm{
+    max-width: 540px;
+    background-color: #491717;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px #ff9f10;
+
+
+
+  }
+  p{margin: 0;}
+
+.sml1{
+    width: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.sml2{
+    width: 23%;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.names,.sml2{
+   background-color: transparent;
+}
+nav{
+    background-color: green;
+    padding: 1px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 7px;
+}
+
+</style>
+
+<body style="background-color: black;color: white;">
+    
+<nav>
+            <h2>entre les noms des modirateurs</h2>
+        </nav>
+    <section class="contentm container">
+        
+        
+ 
+        <div>  <p> nom :1</p>
+          <div class="flex">
+              <input class="sml1 form-control names"  placeholder="nom 1" type="text" name="" id="n1">  <input onkeypress="sendfontsize(1,this,event)" class="fontsz sml2 form-control" type="text" name="" id="" placeholder="fontsize">
+            <select onchange="sendretate(1,this)" class="orionta sml2" name="pets" id="pet-select">
+           
+            <option value="0">top</option>
+            <option value="90">right</option>
+            <option value="180">bottom</option>
+            <option value="-90">left</option>
+            
+        </select>
+          </div><p>nom :2</p>
+           <div class="flex">
+               <input  class="sml1 form-control names" placeholder="nom 2" type="text" name="" id="n2"> <input onkeypress="sendfontsize(2,this,event)"  class="fontsz sml2 form-control" type="text" name="" id="" placeholder="fontsize">
+           <select onchange="sendretate(2,this)"  class="orionta sml2" name="pets" id="pet-select">
+            
+            <option value="0">top</option>
+            <option value="90">right</option>
+            <option value="180">bottom</option>
+            <option value="-90">left</option>
+        </select>
+           </div><p>nom :3</p>
+           <div class="flex">
+               <input class="sml1 form-control names" placeholder="nom 3" type="text" name="" id="n3"> <input  onkeypress="sendfontsize(3,this,event)" class="fontsz sml2 form-control" type="text" name="" id="" placeholder="fontsize">
+           <select onchange="sendretate(3,this)" class="orionta sml2"  name="pets" id="pet-select">
+            
+            <option value="0">top</option>
+            <option value="90">right</option>
+            <option value="180">bottom</option>
+            <option value="-90">left</option>
+        </select>
+           </div><p>nom :4</p>
+           <div class="flex">
+               <input class="sml1 form-control names"  placeholder="nom 4" type="text" name="" id="n4"><input onkeypress="sendfontsize(4,this,event)"  class="fontsz sml2 form-control" type="text" name="" id="" placeholder="fontsize">
+           <select onchange="sendretate(4,this)"  class="orionta sml2" name="pets" id="pet-select">
+         
+            <option value="0">top</option>
+            <option value="90">right</option>
+            <option value="180">bottom</option>
+            <option value="-90">left</option>
+        </select>
+           </div> <p>nom :5 </p>
+           <div class="flex">
+             <input class="sml1 form-control names" placeholder="nom 5" type="text" name="" id="n5"> <input onkeypress="sendfontsize(5,this,event)"  class="fontsz sml2 form-control" type="text" name="" id="" placeholder="fontsize">
+           <select onchange="sendretate(5,this)" class="orionta sml2" name="pets" id="pet-select">
+            
+            <option value="0">top</option>
+            <option value="90">right</option>
+            <option value="180">bottom</option>
+            <option value="-90">left</option>
+        </select>
+           </div> <p>nom :6</p>
+           <div class="flex">
+              <input class="sml1 form-control names" placeholder="nom 6" type="text" name="" id="n6"><input onkeypress="sendfontsize(6,this,event)"  class="fontsz sml2 form-control" type="text" name="" id="" placeholder="fontsize">
+           <select onchange="sendretate(6,this)" class="orionta sml2" name="pets" id="pet-select">
+          
+            <option value="0">top</option>
+            <option value="90">right</option>
+            <option value="180">bottom</option>
+            <option value="-90">left</option>
+        </select>
+           </div>
+        </div>
+             <button class="btn btn-primary" onclick="send()" >send</button>
+    </section>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket =window.io()
+
+function send(){
+var names =document.getElementsByClassName("names")
+var fontsz =document.getElementsByClassName("fontsz")
+var orionta =document.getElementsByClassName("orionta")
+socket.emit("lesnom",[
+       [names[0].value,fontsz[0].value,orionta[0].value],
+       [names[1].value,fontsz[1].value,orionta[1].value],
+       [names[2].value,fontsz[2].value,orionta[2].value],
+       [names[3].value,fontsz[3].value,orionta[3].value],
+       [names[4].value,fontsz[4].value,orionta[4].value],
+       [names[5].value,fontsz[5].value,orionta[5].value],
+
+])
+}
+
+
+
+function sendretate(indexT ,selectob){ 
+  socket.emit("retateinfo",[indexT,selectob.value])  
+}
+
+
+
+
+
+
+
+
+function sendfontsize(indexfont ,selectinput,e){ 
+  //
+  if(e.key==="Enter"){
+  alert(e.target.value+" this is new font for tablet "+ indexfont)
+  socket.emit("fontsize",[indexfont,e.target.value])  
+  }
+}
+
+
+</script>
+</body>
+</html>
