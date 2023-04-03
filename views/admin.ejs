@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="utf-8">
+	
+	<title>Live</title>
+	<link rel="stylesheet" href="../Style/styles.css">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <link rel="stylesheet" href="../Style/css.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/css.css">
+    <script 
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+  <script src="./js/jscotroles.js?v:0.01"></script>
+  <script src="js/js.js"></script>
+  <script src="./js/header_content.js"></script>
+
+
+
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+   background-color: #f3f5f9;
+}
+
+.wrapper{
+  display: flex;
+  position: relative;
+}
+
+.wrapper .sidebar{
+  width: 300px;
+  height: 100%;
+  background: #25242e;
+  padding: 30px 0px;
+  position: fixed;
+}
+
+.wrapper .sidebar h2{
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 30px;
+
+}
+.fa-users-cog{
+margin-right: 5px;
+}
+
+.wrapper .sidebar ul li{
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}    
+
+.wrapper .sidebar ul li a{
+  color: #bdb8d7;
+  display: block;
+}
+
+.wrapper .sidebar ul li a .fas{
+  width: 25px;
+}
+
+.wrapper .sidebar ul li:hover{
+  background-color: #79788d;
+}
+    
+.wrapper .sidebar ul li:hover a{
+  color: #fff;
+}
+ 
+.wrapper .sidebar .social_media{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+/*.wrapper .sidebar .social_media a{
+  display: block;
+  width: 40px;
+  background: #594f8d;
+  height: 40px;
+  line-height: 45px;
+  text-align: center;
+  margin: 0 5px;
+  color: #bdb8d7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}*/
+
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 300px;
+  overflow: hidden;
+
+}
+
+.wrapper .main_content .header{
+  padding: 20px;
+  background: #fff;
+  color: #717171;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+.wrapper .main_content .info{
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+  height: 100vh;
+ 
+}
+
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+}
+
+
+.info{
+  display: flex;
+  flex-direction: row;
+}
+    #live{
+      cursor: pointer;
+    }
+
+            .c{
+              margin-top: 5px;
+            }
+            body{
+    margin: 0;
+    padding: 0px;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+
+}
+
+.lefttop1{
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: flex-start;
+    padding: 10px;
+    box-shadow: rgba(141, 141, 141, 0.342) 1px 1px 2px 4px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    overflow: auto;
+    height: fit-content;
+}
+.lefttop{
+    width: 40%;
+    overflow-y: auto;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    box-shadow: rgba(141, 141, 141, 0.342) 1px 1px 2px 4px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    height: fit-content;
+    height: -moz-fit-content;
+
+}
+
+
+.lefttop2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: flex-start;
+    padding: 10px;
+    box-shadow: rgba(141, 141, 141, 0.342) 1px 1px 2px 4px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    overflow: auto;
+    height: fit-content;
+}
+
+
+
+.righttop{
+    width: 50%;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    box-shadow: rgba(141, 141, 141, 0.342) 1px 1px 2px 4px;
+    padding: 10px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    overflow: auto;
+
+}
+
+
+
+.rightbottom{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    padding: 10px;
+    box-shadow: rgba(141, 141, 141, 0.342) 1px 1px 2px 4px;
+    border-radius: 30px;
+    overflow: auto;
+
+    
+
+}
+@media(max-width:1200px){
+    .content{
+        flex-direction: column;
+    }
+    .rightbottom,.lefttop,.leftbottom,.righttop{
+        width: 90%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+}
+
+.liste{
+   color: coral; 
+   cursor: pointer;
+   font-weight: bold;
+}
+.liste:active{
+    border-radius:25px ;
+    box-shadow: 2px 3px 5px red;
+}
+
+h4{
+    color: cornflowerblue;
+    font-weight: bold;
+
+}
+
+.listsoussession{
+
+    height: 40px;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.listsoussession1{
+    transition: .5s;
+    height: 400px;
+    overflow: auto;
+    
+}
+
+#contentlistesousession{
+
+    height: 300px;
+    overflow-y: auto;
+ 
+    
+}
+
+
+
+
+img{
+    cursor: pointer;
+}
+
+
+
+
+
+
+.list{
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.116) -6px 6px  10px;
+    padding: 10px;
+    width:90%;
+    margin: auto;
+
+ 
+}
+.list tr:nth-child(even){
+    background: rgba(187, 187, 187, 0.226);
+}
+.list td,.list th{
+    height: 40px;
+    color: rgb(28, 204, 151);
+    padding-left:10px;
+    text-align: center;
+    font-weight: bold;
+    
+}
+.list th{
+    color:red;
+}
+
+
+
+.imagesoussession{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100px;
+    width: 100%;
+
+}
+
+.ajoutimgs{
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 10px;
+    border-radius: 10px;
+    float: left;
+}
+
+
+
+.table{
+
+    width: 100%; 
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+   
+   }
+   
+   
+   .table  td , .table  th{
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(122, 124, 125, 1);
+    
+   
+   }
+   .table th{
+    background-color: rgba(72, 72, 72, 1);
+    color: rgb(255, 255, 255);
+    font-family: 'Open Sans',Sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+   
+   }
+   .table tr{
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Montserrat', sans-serif;
+   }
+   .table tr:nth-child(even){
+    background-color: rgb(255, 255, 255);
+   }
+
+   .swal2-content{
+       padding: 0 !important;
+   }
+  </style>
+</head>
+<body  >  
+ 
+    <div class="wrapper">
+      <div class="sidebar" >
+        <h2 ><i  class="fas fa-users-cog"></i>Administracion</h2>
+       
+
+      </div>
+      <div class="main_content">
+          <div class="header">  <H1><i class="fas fa-signal"></i> Live</H1> </div>  
+          <div class="content" id="info">
+
+            <div class="lefttop">        
+                    <div class="lefttop2">
+                      <h4 align="center">Sélectionnez votre source de diffusion en direct</h4>
+                      <form action="/ajoutermeeting" id="frmlivecommoncer" name="frmlivecommoncer" method="POST">
+                       
+                        <input name="url_video" type="text" class="form-control" id="srclivekmc" autocomplete="off" placeholder="la source ..."><br>
+                        <h1 align="center" style="margin: auto;">
+                          <button type="submit" class="btn btn-outline-danger"> Go live </button>
+                        </h1>
+                      </form>
+                    </div>
+            </div>
+          <div class="righttop">
+            <div class="lefttop1" >
+              <h4 align="center">Télécharger des images</h4>
+                 <div class="form-group">
+                      <form action="/ajouteimg" method="post" enctype="multipart/form-data">
+                         <table style="width: 100%;">
+                          <tr> <th> Image d'en-tête </th> <th> <input type="file"  accept="image/*" id="header"     name="header"     class="btn btn-outline-success c"  ></th> </tr>
+                          <tr> <th>Image contenu    </th> <th> <input type="file"  accept="image/*" id="imgcontent" name="imgcontent" class="btn btn-outline-success c"  ></th> </tr>
+                         </table> 
+                         <h1 align="center" style="margin: auto;">
+                          <button type="submit" class="btn btn-info"> change </button>
+                        </h1>
+                        <button type="button" class="btn btn-info">Info</button>
+                      </form> 
+      
+                  </div>
+                  <p style="text-align: center; "> <button type="button" onclick="imginfos()" style="display: none;" id="btnvlid" class="btn btn-success">charger</button> </p>
+                  
+
+                  <div class="progress" style="width: 50%; margin: auto;">
+                    <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                     <div id="blockimg"></div>
+            </div>
+      
+            
+
+
+               
+          </div>
+
+         <!---bottom-->
+        
+      
+            
+     
+
+
+     
+
+            </div>
+
+            
+            
+        </div>
+      </div>
+  </div>
+
+
+
+</body>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+ var socketio = io();
+
+</script>
+</html>

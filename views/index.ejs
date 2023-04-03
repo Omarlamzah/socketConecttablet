@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="dist/hint.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.css" />
+    <link rel="stylesheet" href="dist/animate.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+
+<style>
+    .plyr--paused .plyr__poster {
+		z-index: 2;
+    background-image: url("asset/imgcontent/<%=piccontent%>");
+	position: absolute;
+	opacity: 1;
+	top: 0;
+	  left: 0;
+  bottom: 0;
+  right: 0;
+
+}
+audio::-webkit-media-controls-panel {
+  background-color: #56AEFF;
+}
+audio::-webkit-media-controls-volume-slider {
+  background-color: #B1D4E0;
+  border-radius: 25px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.plyr__title,
+.plyr__controls__item.plyr__control--overlaid {
+  display: none;
+}
+.plyr--stopped.plyr__poster-enabled .plyr__poster {
+    opacity: 1;
+    position: absolute;
+    top: 0;
+}
+.plyr__poster {
+  background-position: center;
+  background-size: cover;
+}
+.ytp-title-text{display: none;}
+audio{
+  width: 70%;
+  height: 30px;
+}
+.display{
+    position: fixed;
+    bottom: 40px;
+    display: block;
+    z-index: 99999;
+    left: 44px;
+    width: 65%;
+}
+</style>
+<body class=" h-screen">
+<div class="content  hidden ">
+    
+    <img class="wow imgheader" src="asset/entit/<%=picturnav%>" alt="" srcset="">
+<nav class="bg-black text-white flex justify-between p-4 text-lg">
+ <p class=" ml-9">المباشر </p>
+ <p class=" ml-5"><%=meinfo.name%></p>
+ <a href="/online"><p class="relative"> <span class=" absolute w-3 h-3 rounded-[50%] bg-green-500"></span><i class="fa-solid fa-people-line text-[22px] bg-white text-black p-2 rounded-[50%]"></i><span id="nvnow" class=" text-amber-500 ml-2">0</span></p></a> 
+  <span><a href="logout">تسجيل الخروج<i class=" ml-2 fa-solid fa-right-from-bracket"></i></a></span>
+  <div class="a33 absolute"></div>
+</nav>
+<section class="grid grid-cols-1 md:grid-cols-3 h-[80vh]">
+  
+  <div class="wow vplyr md:col-span-2 relative">
+
+    <% if (!piccontent) { %>
+      <div class="h-screen plyr__video-embed"  id='player'>
+        <iframe id="myIFrameElemId" src="<%=meinfo.url_video %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; " allowfullscreen></iframe>
+      </div>
+      <!-- Render some HTML or include another template -->
+   
+    <% } %>
+
+    <div class=" absolute z-50"><img src="asset/imgcontent/<%=piccontent%>" alt="" srcset=""></div>
+
+
+
+</div>
+
+<div class="chat overflow-y-scroll overflow-x-auto relative">
+  <article class="msgerea mb-[8vh]">
+  
+  
+      
+     
+        <%- include('partials/formmessage.ejs') %>
+    
+      
+  </article>
+
+<article class=" fixed bottom-[20vh]">
+
+
+
+
+</article>
+
+
+
+</div>
+
+
+</section>
+
+  
+</div>
+
+  <%- include('partials/loader') %>
+
+
+<audio class=" hidden" id="son" controls src="asset/son/son.mp3"></audio>
+
+</body>
+<script  src="jquery/dist/jquery.js"></script>
+<script  src="scripts/wow.min.js"></script>
+<script  src="scripts/vrecorder.js"></script>
+<script>
+  new WOW().init();
+  </script>
+   <script src="socket.io/socket.io.js"></script>
+   
+
+<script src="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.js"></script>
+<script>
+var socketio = io();
+
+
+
+
+
+window.onload=()=>{
+ 
+  if (document.visibilityState === 'visible') {
+ socketio.emit("visibleuser");
+ alert(11)
+  }
+
+
+setInterval(function(){
+    $(".container").hide();
+    $(".content").show();
+},1)
+
+
+$(".imgheader").addClass("bounceIn")
+    $(".vplyr").addClass("bounceIn")  
+}
+
+
+socketio.on("newvisite",function(nvisite){
+
+document.getElementById("nvnow").innerText=nvisite
+
+})
+//window.addEventListener("close",function(){socketio.emit("wwwww")})
+//document.addEventListener("close",function(){socketio.emit("wwwww")})
+player.poster="<%=meinfo.poster%>"
+const players = new Plyr('#player', {
+  youtube: {
+    iv_load_policy: 3,
+    modestbranding: 1,
+    controls: 2
+  }
+});
+
+
+
+var audioname
+var filenameimg
+var iduer= " <%=iduser%>";
+var idmeet="<%=meinfo.id%>"  ;
+var usname="<%=name%>"  ;
+function sendmessagedata(){ 
+   audioname=Date.now().toString()
+var txtmessage=document.getElementById("txtmessage").value
+var choosimg=document.getElementById("choosimg")
+var audo=document.getElementsByTagName("audio")
+if(audo.length>0){
+  var audiosrc=document.getElementById("audiosrc")
+  audiosrc.value=audo[0].src
+}
+if(choosimg.files.length>0){
+  filenameimg=Date.now()+choosimg.files[0].name
+  console.log("imgjjjjjjjjjjj"+filenameimg)
+}
+else{
+  filenameimg="defualtimg.gif"
+  console.log("imgooooooooooooo"+filenameimg)
+}
+var iduer= " <%=iduser%>";
+var usname="<%=name%>"  ;
+console.log(iduer)
+console.log("-------")
+console.log(idmeet)
+var audimsg=document.getElementById("audiouser")
+if( audfilename=="nonameaudio" || audimsg==null){
+  audfilename="nonameaudio"
+}
+else {
+var audfilename=usname+"_"+audioname+".ogg"
+}
+
+
+var delrec=document.getElementById("delrec")
+if(delrec.style.display=="none"){
+  audfilename="nonameaudio"
+
+}
+  socketio.emit("msginfo",[iduer,idmeet,txtmessage,filenameimg,usname ,Date().split(" ")[4],audfilename])
+  
+  clearDisplay()
+}
+
+
+
+socketio.on("newmessage",function(minfo){
+
+
+  var sonn=document.getElementById("son")
+  var txtmessage=document.getElementById("txtmessage").value
+  var iduer= " <%=iduser%>";
+  var idmeet="<%=meinfo.id%>"  ;
+ 
+ //alert(txtmessage)
+
+  var mesg= "";
+  var starkpark="parker"
+
+  if(minfo[0]!=iduer)
+  {
+    starkpark="stark"
+  }
+  if( minfo[3]=="defualtimg.gif" && minfo[6]=="nonameaudio"){
+    alert(00000000000000)
+    console.log(minfo[0]+"----------------------")
+  console.log(minfo[1]+"----------------------")
+  console.log(minfo[3]+"----------------------")
+  console.log(minfo[4]+"----------------------")
+  console.log(minfo[5]+"----------------------")
+  console.log(minfo[6]+"----------------------")
+    sonn.play()
+    mesg=" <div class='message "+starkpark+"'>"+
+    "<p>"+ minfo[2] +"</p>   "
+          +"<p class=' text-sm text-[11px]' style='text-align: right;''>"+ minfo[5] +"</p>"
+            +"  <p class=' text-sm text-[11px]' style='text-align: right;'> "+ minfo[4] +"</p>"
+            +"</div>" ;
+  }
+  if(minfo[3]!="defualtimg.gif" && minfo[6]=="nonameaudio"){
+    alert(1111111111111111)
+    console.log(minfo[0]+"----------------------")
+  console.log(minfo[1]+"----------------------")
+  console.log(minfo[3]+"----------------------")
+  console.log(minfo[4]+"----------------------")
+  console.log(minfo[5]+"----------------------")
+  console.log(minfo[6]+"----------------------")
+                          sonn.play()
+    sonn.play()
+    mesg=" <div class='message "+starkpark+"'>"+
+    "<p>"+ minfo[2] +"</p>   "
+          +  " <img onclick='loadimg(this)'  id='imgms' srcset='asset/msgasset/defualtimg.gif' src='asset/msgasset/"
+          +   minfo[3]
+          +"'>"
+          +"<p class=' text-sm text-[11px]' style='text-align: right;''>"+ minfo[5] +"</p>"
+            +"  <p class=' text-sm text-[11px]' style='text-align: right;'> "+ minfo[4] +"</p>"
+            +"</div>" ;
+  }
+  if(minfo[3]=="defualtimg.gif" &&   minfo[6]!="nonameaudio"  ){
+    alert(2222222222222222)
+    console.log(minfo[0]+"----------------------")
+  console.log(minfo[1]+"----------------------")
+  console.log(minfo[3]+"----------------------")
+  console.log(minfo[4]+"----------------------")
+  console.log(minfo[5]+"----------------------")
+  console.log(minfo[6]+"----------------------")
+
+mesg=" <div  class='message "+starkpark+"'>"+
+         "<p>"+ minfo[2] +"</p>   "
+      +  " <audio controls  id='"+ minfo[6] +"' src='asset/msgasset/"+ minfo[6] +"' "
+  
+      +"'></audio>"
+      +"<i class='fa-solid fa-download' onclick='loadaudio("+'"'+ minfo[6].toString()+ '"'+ ")'></i>"
+      +"<p class=' text-sm text-[11px]' style='text-align: right;''>"+ minfo[5] +"</p>"
+        +"  <p class=' text-sm text-[11px]' style='text-align: right;'> "+ minfo[4] +"</p>"
+
+        +"</div>" ;
+}
+            $(".messages").append(mesg)
+            var d= document.getElementsByClassName("chat")
+            d[0].scrollTop=d[0].scrollHeight
+
+})
+
+
+
+$.post("/upload", { name: "John", time: "2pm" } );
+
+
+
+
+
+
+//var imgms=document.getElementById("imgms")
+
+
+function loadimg(t){
+ setTimeout(function(){
+  t.src=t.src
+     t.srcset=t.src
+     console.log(t.src)
+ },3000)
+     
+
+}
+function loadaudio(idaudio){
+  var audiotag=document.getElementById(idaudio)
+  audiotag.src="asset/msgasset/"+ idaudio
+  //alert(audiotag.src)
+}
+function myFunction() {
+  var iframe = document.getElementById("myFrame");
+  var elmnt = iframe.contentWindow.document.getElementsByClassName("html5-video-player")
+  elmnt.style.display = "none";
+}
+var pathimg=""
+function geturlimg(e){
+  var imgpreview=document.getElementById("imgpreview")
+  imgpreview.style.display="block"
+  pathimg=e.target.value
+   imgpreview.src=pathimg
+  
+   console.log(pathimg+"mmm")
+   if(choosimg.files.length>0){
+  filenameimg=Date.now()+choosimg.files[0].name
+}
+else{
+  choosimg="defualtimg.gif"
+}
+}
+function removemsge(ms){
+  $("#"+ms).toggle()
+}
+function deletemessage(id,mespark,usern,aunaem,filename){
+socketio.emit("deletemesage",[mespark,usern] )
+$.post("/removemessage",{idm:id,au:aunaem,fname:filename})
+//$("#"+mespark).empty()
+}
+socketio.on("delmsg",function(mesdata){
+  $("#"+mesdata[0]).empty()
+  $("#"+mesdata[0]).append("<p> تم حدف هذه الرسالة </p>")
+  $("#"+mesdata[0]).append("<p>"+mesdata[1]+" من طرف</p>")
+})
+//ajax upload mess
+$(document).ready(function() {
+            $("#submit").click(function(e) { 
+             
+              e.preventDefault()
+                var fd = new FormData();
+                if(document.getElementById("choosimg").files.length>0){
+                  var files = $('#choosimg')[0].files[0];
+                 
+                   fd.append('films', files,filenameimg); 
+                }
+                if(document.getElementById("txtmessage").value!=""){
+                  fd.append("txtmessage",(document.getElementById("txtmessage").value).trim())
+                }
+                else{
+                  fd.append("txtmessage"," ")
+                }
+                if(document.getElementById("delrec").style.display=="block"){
+                  fd.append("blob",blob,usname+"_"+audioname+".ogg")
+                }
+              
+                $.ajax({
+                    url: '/addmessage',
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        if(response != 0){
+                          var sonn=document.getElementById("son")
+                        //  sonn.play()
+                        }
+                        else{
+                            alert('file not uploaded');
+                        }
+                    },
+                });
+            });
+        });
+//ajax upload mess
+
+function displaytrash(){
+
+  var delrec=document.getElementById("delrec")
+delrec.style.display="block"
+
+
+}
+
+
+
+function delettrash(){
+  var delrec=document.getElementById("delrec")
+delrec.style.display="none"
+
+
+audfilename="nonameaudio"
+
+
+}
+
+
+
+
+
+
+
+
+function deletemessagee(idmess){
+/*
+  $.ajax({
+                    url: '/removemessage',
+                    type: 'post',
+                    data: 33,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        if(response){
+                         
+                          alert('message is supreed');
+                        
+                        }
+                        else{
+                            alert('file not supremed');
+                        }
+                    },
+                });
+*/}
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') {
+ socketio.emit("userhidden");
+  }
+});
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible') {
+ socketio.emit("visibleuser");
+  }
+});
+
+
+window.addEventListener('beforeunload', (event) => {
+  socketio.emit("wew");
+  alert(22)
+  event.preventDefault();
+  event.returnValue = '';
+
+});
+
+
+      
+</script>
+
+</html>

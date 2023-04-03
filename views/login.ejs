@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة التشجيل</title>
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="dist/hint.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="dist/animate.css"/>
+</head>
+<body>
+
+
+    <div class="hidden h-[100vh] login grid-cols-2">
+        <div class="hidden rightside wow sm:hidden md:hidden lg:grid brt">
+          
+        </div>
+
+
+        <section class="text-lg main m-auto w-[100vw] sm:w-[100vw] lg:w-[100%]">
+            <div class="flex flex-col gap-5 text-center items-center login-container">
+                <img data-hint="Thank youddd!" class="wow avatar hint--top w-[200px]  hover:cursor-pointer rounded-[50%] border-[2px] border-black imgavatar"  src="/asset/log.jpg" >
+                <p class="text-2xl" >  مرحبا بك في <span class=" text-amber-600">الألفة</span> </p>
+                <hr class=" border-[4px] border-amber-700 w-[15%]">
+                <p class="welcome-message">يرجى تقديم بيانات اعتماد تسجيل الدخول للمتابعة والوصول إلى جميع خدماتنا</p>
+    
+                <form method="post" action="/" class="wow frm flex gap-7 items-center flex-col login-form">
+                    <div class="btndiv form-control p-4 bg-[#d2d3cf] rounded-xl">
+                        <input name="name" type="text" dir="rtl" id="Nom" placeholder="الاسم الكامل " class=" focus:border-0 focus:outline-none bg-transparent inputdiv">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button type="submit" class="custom-btn btn-14 submit" > تسجيل الدخول </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+
+    <%- include('partials/loader') %>
+</body> 
+<script  src="jquery/dist/jquery.js"></script>
+   <script src="/socket.io/socket.io.js"></script>
+   <script  src="scripts/wow.min.js"></script>
+<script>
+  new WOW().init();
+  </script>
+<script>
+  var socket = io();
+
+window.onload=()=>{
+ if (document.visibilityState === 'visible') {
+socket.emit("visibleuser");
+alert(11)
+ }
+
+setInterval(function(){
+    $(".container").hide();
+    $(".login").css("display", "grid");
+},1000)
+
+
+$(".avatar").addClass("bounceIn")
+$(".frm").addClass("bounceIn")
+$(".rightside").addClass("bounceIn")
+   
+
+
+}
+
+
+
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') {
+ socket.emit("userhidden");
+  }
+});
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible') {
+ socket.emit("visibleuser");
+  }
+});
+</script>
+
+
+</html>

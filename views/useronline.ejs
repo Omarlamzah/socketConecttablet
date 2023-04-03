@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/output.css">
+    <title>Document</title>
+
+</head>
+
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Red+Hat+Display:400,500,900&display=swap");
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
+/* Having some fun with the clip property*/
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,300");
+
+.prec{
+  background-color: #FD7660;
+  display: inline-block;
+  padding: 6px 20px 6px 16px;
+  border: 1px solid #C85440;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  border-radius: 3px;
+  color: #F5F5F5;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  margin: 100px;
+  text-decoration: none;
+  position: relative;
+}
+
+.prec:before{
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #FD7660;
+  left: -6px;
+  top: -9px;
+  border-radius: 4px;
+  -webkit-transform: rotate(135deg);
+  clip: rect(26px, 50px, 50px, 27px);
+  box-shadow: inset 0px -1px 0 #C85440, inset -1px 0px 0 #C85440, inset 0px -2px 0 rgba(255,255,255, .2);
+}
+
+.prec:hover{
+  background: #FC6C56;
+}
+
+.prec:hover:before{
+  background: #FC6C56;
+}
+
+.prec:active{
+  background: #E56A57;
+}
+
+.prec:active:before{
+  background: #E56A57;
+}
+
+    
+
+.demo-up {
+  display: block;
+  height: 35px;
+  position: relative;
+  color: #2ECC71;
+}
+.demo-slow {
+  display: block;
+  height: 35px;
+  position: relative;
+  color: #F1C40F;
+}
+.demo-down {
+  display: block;
+  height: 35px;
+  position: relative;
+  color: #E74C3C;
+}
+
+/** Server status css **/
+.server-status {
+  left: 10px;
+  
+  margin-left: 41px;
+  margin-top: 22px;
+  position: absolute;
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.server-status::before,
+.server-status::after {
+  left: 0;
+  top: 50%;
+  margin-left: -1px;
+  margin-top: -6px;
+  position: absolute;
+  vertical-align: middle;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.server-status[type="up"],
+.server-status[type="up"]::before,
+.server-status[type="up"]::after {
+  background: #2ECC71;
+}
+.server-status[type="down"],
+.server-status[type="down"]::before,
+.server-status[type="down"]::after {
+  background: #E74C3C;
+}
+.server-status[type="slow"],
+.server-status[type="slow"]::before,
+.server-status[type="slow"]::after {
+  background: #F1C40F;
+}
+
+.server-status::before {
+  content: "";
+  animation: bounce 1.5s infinite;
+}
+.server-status::after {
+  content: "";
+  animation: bounce 1.5s -0.4s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    -webkit-transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    -webkit-transform: scale(2);
+    opacity: 0;
+  }
+}
+  .pic {
+    width: 4rem;
+    height: 4rem;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+  }
+  
+  .contact {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 5rem;
+    height: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact .pic {
+    position: absolute;
+    left: 0;
+  }
+  .contact .name {
+    font-weight: 500;
+    margin-bottom: 0.125rem;
+  }
+  .contact .message, .contact .seen {
+    font-size: 0.9rem;
+    color: #999;
+  }
+  .contact .badge {
+    box-sizing: border-box;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 0.125rem;
+    border-radius: 1rem;
+    top: 0;
+    left: 2.5rem;
+    background: #333;
+    color: white;
+  }
+  
+  .contacts {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-6rem, -50%);
+    width: 24rem;
+    height: 32rem;
+    padding: 1rem 2rem 1rem 1rem;
+    box-sizing: border-box;
+    border-radius: 1rem 0 0 1rem;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 0 8rem 0 rgba(0, 0, 0, 0.1), 2rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+    transition: transform 500ms;
+  } 
+  .contacts h2 {
+    margin: 0.5rem 0 1.5rem 5rem;
+  }
+  .contacts .fa-bars {
+    position: absolute;
+    left: 2.25rem;
+    color: #999;
+    transition: color 200ms;
+  }
+  .contacts .fa-bars:hover {
+    color: #666;
+  }
+  .contacts .contact:last-child {
+    margin: 0;
+  }
+  .contacts:hover {
+    transform: translate(-23rem, -50%);
+  }
+  
+  .chat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    
+    z-index: 2;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    background: white;
+    box-shadow: 0 0 8rem 0 rgba(0, 0, 0, 0.1), 0rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+  }
+  .chat .contact.bar {
+    flex-basis: 3.5rem;
+    flex-shrink: 0;
+    margin: 1rem;
+    box-sizing: border-box;
+  }
+  .chat .messages {
+    padding: 1rem;
+    background: #F7F7F7;
+    flex-shrink: 2;
+    overflow-y: auto;
+    box-shadow: inset 0 2rem 2rem -2rem rgba(0, 0, 0, 0.05), inset 0 -2rem 2rem -2rem rgba(0, 0, 0, 0.05);
+  }
+  .chat .messages .time {
+    font-size: 0.8rem;
+    background: #EEE;
+    padding: 0.25rem 1rem;
+    border-radius: 2rem;
+    color: #999;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .chat .messages .message {
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    background: #FFF;
+    border-radius: 1.125rem 1.125rem 1.125rem 0;
+    min-height: 2.25rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    max-width: 66%;
+    width: 70%;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.075), 0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
+  }
+  .chat .messages .message.parker {
+    margin: 1rem 1rem 1rem auto;
+    border-radius: 1.125rem 1.125rem 0 1.125rem;
+    background: #333;
+    color: white;
+  }
+  .chat .messages .message .typing {
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0rem;
+    box-sizing: border-box;
+    background: #ccc;
+    border-radius: 50%;
+  }
+  .chat .messages .message .typing.typing-1 {
+    -webkit-animation: typing 3s infinite;
+            animation: typing 3s infinite;
+  }
+  .chat .messages .message .typing.typing-2 {
+    -webkit-animation: typing 3s 250ms infinite;
+            animation: typing 3s 250ms infinite;
+  }
+  .chat .messages .message .typing.typing-3 {
+    -webkit-animation: typing 3s 500ms infinite;
+            animation: typing 3s 500ms infinite;
+  }
+  .chat .input {
+    box-sizing: border-box;
+    flex-basis: 4rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem 0 1.5rem;
+  }
+  .chat .input i {
+    font-size: 1rem;
+    margin-right: 1rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 200ms;
+  }
+  .chat .input i:hover {
+    color: #333;
+  }
+  .chat .input input {
+    border: none;
+    background-image: none;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    border-radius: 1.125rem;
+    flex-grow: 2;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1), 0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.2);
+    font-family: Red hat Display, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+  }
+  .chat .input input:placeholder {
+    color: #999;
+  }
+  
+  @-webkit-keyframes typing {
+    0%, 75%, 100% {
+      transform: translate(0, 0.25rem) scale(0.9);
+      opacity: 0.5;
+    }
+    25% {
+      transform: translate(0, -0.25rem) scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes typing {
+    0%, 75%, 100% {
+      transform: translate(0, 0.25rem) scale(0.9);
+      opacity: 0.5;
+    }
+    25% {
+      transform: translate(0, -0.25rem) scale(1);
+      opacity: 1;
+    }
+  }
+  .pic.stark {
+    background-image: url("");
+  }
+  
+  
+  
+  #delrec{
+    display: none;
+  }
+  
+  audio::-webkit-media-controls-play-button{
+    background-color: rgb(154, 190, 20);
+    color: #EEE;
+    border-radius: 50%;
+  }
+  audio::-webkit-media-controls-play-button{
+    background-color: rgb(154, 190, 20);
+    color: #EEE;
+    border-radius: 50%;
+  }
+  .display{
+    position: absolute;
+      bottom: 41px;
+      left: 37%;
+      font-size: 26px;
+      font-weight: bolder;
+      width: 80%;
+  }
+  
+  
+  @media(max-width: 740px){
+    .messpart{
+  width: 100%;
+  }
+      }
+  
+  </style>
+<body>
+    <img class="wow imgheader" src="asset/navolfa.jpg" alt="" srcset="">
+
+   
+<table class="m-auto relative">
+   <tr>
+    <th> الأشخاص الناشطون الأن </th>
+    
+   
+   </tr>
+
+   <% userisonline.forEach(function(user) { %>
+   <tr></tr>
+
+
+        <% if(typeof(user)!="undefined"){ %>
+        <% if(user.search("iduser")!=-1){ %>
+            <%var datauser= user.split(";")%>
+              <% for (const usr of datauser) { %>
+               
+               <% const [key,  value ] = usr.split("=");  %> 
+                      <% if (key === "nameuser") { %>
+
+
+                        <% const v2=decodeURI(value) %>
+<tr>
+<td class=" flex mt-5 ">
+    <div class="pic stark relative bg-slate-500 rounded-[50%]">
+        <p class=" absolute top-[22%] text-white text-[25px] text-center w-full">
+          <%if(v2.split(" ").length>1) {%>
+              <%=(v2.split(" ")[0].slice(0,1))+" "+(v2.split(" ")[1].slice(0,1))%> 
+            <%}else{%>
+              <%=(v2.slice(0,2)) %> 
+            <%}%>
+        </p>
+      </div>
+      <div>
+        <div class=" relative">  <p class=""><%= v2.replaceAll("%20"," ") %></p></div>
+        <span class="server-status" type="up"></span>
+      </div>
+</td></tr>
+
+<br>
+            <% } %>
+                <% } %>
+                <% } %>
+            <% } %>
+        <% }) %>
+
+
+
+</table>
+
+
+
+
+<div>
+    <a href="/" style="    position: absolute;
+margin: 0;" class="prec absolute m-0 md:top-[4vh]  top-[0vh] left-[40%]">
+   رجوع إلى المجلس
+  </a>
+
+
+  <a href="/majalis?q=0" style=" position: absolute;
+margin: 0;" class="prec absolute m-0 md:top-[4vh]  top-[0vh] left-[70%]" >
+   رجوع الى الأرشيف
+  </a>
+
+</div>
+
+
+
+</body>
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+ var socketio = io();
+
+ window.onload=()=>{
+ 
+ if (document.visibilityState === 'visible') {
+socketio.emit("visibleuser");
+alert(11)
+ }
+}
+
+  document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') {
+ socketio.emit("userhidden");
+  }
+});
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible') {
+ socketio.emit("visibleuser");
+  }
+});
+</script>
+</html>
